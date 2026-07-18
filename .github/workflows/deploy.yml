@@ -31,4 +31,4 @@ jobs:
       - name: Restart the live website
         shell: powershell
         run: |
-          pm2 restart gondiatoday-web
+          & "C:\Program Files\nodejs\node_modules\npm\pm2.cmd.ps1" restart gondiatoday-web
