@@ -25,6 +25,4 @@ jobs:
         run: npm run build
 
       - name: Restart the live website
-        shell: powershell
-        run: |
-          & "C:\Users\Administrator\AppData\Roaming\npm\pm2.ps1" restart gondiatoday-web
+        run: npx pm2 restart gondiatoday-web
