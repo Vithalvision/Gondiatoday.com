@@ -67,7 +67,7 @@ export default async function HomePage() {
   return (
     <main className="bg-surface-muted">
 
-      {/* 🔵 TOP AD */}
+      {/* 🔵 TOP AD HERE */}
       <div className="w-full flex justify-center my-4">
         <AdSlot type="header" id="1234567890" />
       </div>
