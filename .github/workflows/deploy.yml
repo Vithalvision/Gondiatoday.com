@@ -31,4 +31,5 @@ jobs:
       - name: Restart the live website
         shell: powershell
         run: |
-          npx pm2 restart gondiatoday-web
+          C:\Users\Administrator\AppData\Roaming\npm
+          `-- pm2 restart gondiatoday-web
