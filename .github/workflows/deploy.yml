@@ -11,24 +11,37 @@ jobs:
     runs-on: [self-hosted, gondia-server]
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+
+      - name: Update production folder
+        shell: powershell
+        run: |
+          cd C:\gondia\gondia-share
+          git pull origin main
 
       - name: Copy .env
         shell: powershell
         run: |
-          Copy-Item "C:\gondia\gondia-share\.env" ".env" -Force
+          Copy-Item "C:\gondia\gondia-share\.env" "C:\gondia\gondia-share\.env" -Force
 
       - name: Install dependencies
-        run: npm ci
+        shell: powershell
+        run: |
+          cd C:\gondia\gondia-share
+          npm ci
 
       - name: Generate Prisma Client
-        run: npx prisma generate
+        shell: powershell
+        run: |
+          cd C:\gondia\gondia-share
+          npx prisma generate
 
       - name: Build the website
-        run: npm run build
+        shell: powershell
+        run: |
+          cd C:\gondia\gondia-share
+          npm run build
 
       - name: Restart the live website
         shell: powershell
         run: |
-         & "C:\Users\Administrator\AppData\Roaming\npm\pm2.cmd" restart gondiatoday-web
+          & "C:\Users\Administrator\AppData\Roaming\npm\pm2.cmd" restart gondiatoday-web
