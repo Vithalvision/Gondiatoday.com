@@ -18,11 +18,6 @@ jobs:
           cd C:\gondia\gondia-share
           git pull origin main
 
-      - name: Copy .env
-        shell: powershell
-        run: |
-          Copy-Item "C:\gondia\gondia-share\.env" "C:\gondia\gondia-share\.env" -Force
-
       - name: Install dependencies
         shell: powershell
         run: |
