@@ -13,7 +13,7 @@ export default function PrivacyPolicyPage() {
       </p>
 
       <h2 className="text-2xl font-semibold mt-8 mb-4">
-        Information We Collect data in order to provide you with a better experience and improve our services.
+        Information We Collect
       </h2>
 
       <p className="mb-4">We may collect:</p>
