@@ -1,4 +1,4 @@
-import { Facebook, Twitter, Instagram, Youtube } from 'lucide-react';
+import { FaFacebookF, FaInstagram, FaYoutube, FaXTwitter } from "react-icons/fa6";
 
 const today = new Date().toLocaleDateString('en-GB', {
   weekday: 'long',
@@ -66,10 +66,10 @@ export function UtilityBar() {
 
     {/* Right */}
     <div className="flex items-center gap-3">
-      <a href="#"><Facebook size={14} /></a>
-      <a href="#"><Twitter size={14} /></a>
-      <a href="#"><Instagram size={14} /></a>
-      <a href="#"><Youtube size={14} /></a>
+      <a href="https://www.facebook.com/GondiaToday"><FaFacebookF size={14} /></a>
+      <a href="https://twitter.com/GondiaToday"><FaXTwitter size={14} /></a>
+      <a href="https://www.instagram.com/GondiaToday"><FaInstagram size={14} /></a>
+      {/* <a href="https://www.youtube.com/GondiaToday"><FaYoutube size={14} /></a> */}
     </div>
 
   </div>

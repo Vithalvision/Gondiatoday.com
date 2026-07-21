@@ -1,5 +1,11 @@
 import Link from 'next/link';
-import { Facebook, Twitter, Instagram, Youtube, MessageCircle, MapPin, Phone, Mail } from 'lucide-react';
+import { MessageCircle, MapPin, Phone, Mail } from 'lucide-react';
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaYoutube,
+  FaXTwitter,
+} from 'react-icons/fa6';
 
 const QUICK_LINKS = [
   { label: 'Home', href: '/' },
@@ -43,11 +49,11 @@ export function Footer() {
             हम आपके लिए तथ्यात्मक और जिम्मेदार पत्रकारिता प्रस्तुत करते हैं।
           </p>
           <div className="flex items-center gap-4 mt-5">
-            <a href="#" aria-label="Facebook" className="hover:text-brand-light"><Facebook size={16} /></a>
-            <a href="#" aria-label="Twitter" className="hover:text-brand-light"><Twitter size={16} /></a>
-            <a href="#" aria-label="Instagram" className="hover:text-brand-light"><Instagram size={16} /></a>
-            <a href="#" aria-label="YouTube" className="hover:text-brand-light"><Youtube size={16} /></a>
-            <a href="#" aria-label="WhatsApp" className="hover:text-brand-light"><MessageCircle size={16} /></a>
+            <a href="https://www.facebook.com/GondiaToday" aria-label="Facebook" className="hover:text-brand-light"><FaFacebookF size={16} /></a>
+            <a href="https://twitter.com/GondiaToday" aria-label="Twitter" className="hover:text-brand-light"><FaXTwitter size={16} /></a>
+            <a href="https://www.instagram.com/GondiaToday" aria-label="Instagram" className="hover:text-brand-light"><FaInstagram size={16} /></a>
+            <a href="https://www.youtube.com/GondiaToday" aria-label="YouTube" className="hover:text-brand-light"><FaYoutube size={16} /></a>
+            <a href="https://wa.me/919145594704" aria-label="WhatsApp" className="hover:text-brand-light"><MessageCircle size={16} /></a>
           </div>
         </div>
 
@@ -64,7 +70,7 @@ export function Footer() {
             </li>
             <li className="flex items-center gap-2">
               <Phone size={14} className="flex-shrink-0" />
-              <span>+91 12345 67890</span>
+              <span>+91 9145594704</span>
             </li>
             <li className="flex items-center gap-2">
               <Mail size={14} className="flex-shrink-0" />
