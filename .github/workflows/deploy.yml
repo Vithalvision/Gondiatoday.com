@@ -11,12 +11,16 @@ jobs:
     runs-on: [self-hosted, gondia-server]
 
     steps:
-
       - name: Update production folder
         shell: powershell
         run: |
           cd C:\gondia\gondia-share
           git pull origin main
+
+      - name: Stop live website
+        shell: powershell
+        run: |
+          & "C:\Users\Administrator\AppData\Roaming\npm\pm2.cmd" stop gondiatoday-web
 
       - name: Install dependencies
         shell: powershell
