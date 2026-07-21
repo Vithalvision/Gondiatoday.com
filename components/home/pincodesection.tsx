@@ -15,7 +15,7 @@ export function PincodeSection({ pincodes }: PincodeSectionProps) {
     <div>
       <div className="border-b-2 border-red-600 pb-2 mb-4">
         <h3 className="text-lg font-bold text-gray-900">
-          📮 Gondia Pincodes
+          📮 Gondia Pincode
         </h3>
       </div>
 
