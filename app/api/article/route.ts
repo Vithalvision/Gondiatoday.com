@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    const res = await fetch("http://localhost:3001/api/article", {
+    const res = await fetch("http://localhost:3007/api/articles", {
       cache: "no-store",
     });
 

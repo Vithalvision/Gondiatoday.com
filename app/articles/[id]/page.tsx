@@ -10,7 +10,7 @@ async function getArticles() {
     const baseUrl =
       process.env.NEXT_PUBLIC_API_URL ||
       process.env.NEXT_PUBLIC_BASE_URL ||
-      "http://localhost:3001";
+      "http://localhost:3007";
 
     const res = await fetch(`${baseUrl}/api/article`, {
       cache: "no-store",
