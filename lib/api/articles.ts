@@ -36,7 +36,7 @@ import { demoArticles } from "@/lib/data/demoarticles";
 // export async function getHeroArticle(slug: string) {
 //   try {
 //     const baseUrl =
-//       process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3001";
+//       process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3007";
 
 //     const res = await fetch(`${baseUrl}/api/articles/${slug}`, {
 //       cache: "no-store",
@@ -91,7 +91,7 @@ import { demoArticles } from "@/lib/data/demoarticles";
 export async function getHeroArticle(slug?: string) {
   try {
     const baseUrl =
-      process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3001";
+      process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3007";
 
     const res = await fetch(`${baseUrl}/api/articles`, {
       cache: "no-store",
@@ -164,7 +164,7 @@ export async function getTopStories() {
 
 export async function getLatestNews() {
   try {
-    const res = await fetch("http://localhost:3001/api/articles", {
+    const res = await fetch("http://localhost:3007/api/articles", {
       cache: "no-store",
     });
 
@@ -238,7 +238,7 @@ export async function getLocalSpotlight() {
 export async function getArticlesByCategory(category: string) {
   try {
     const baseUrl =
-      process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3001";
+      process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3007";
 
     const res = await fetch(`${baseUrl}/api/articles`, {
       cache: "no-store",
