@@ -1,6 +1,5 @@
 import { Category } from '@/lib/types';
 import { cn } from '@/lib/utils';
-import Link from 'next/link';
 
 export function CategoryTag({
   category,
@@ -13,25 +12,21 @@ export function CategoryTag({
 }) {
   if (onDark) {
     return (
-      <Link
-        href={`/${category.slug}`}
-        className="inline-block font-display font-bold uppercase tracking-wider text-[11px] bg-white/95 text-ink px-2 py-1 rounded-sm hover:bg-white transition-colors"
-      >
+      <span className="inline-block font-display font-bold uppercase tracking-wider text-[11px] bg-white/95 text-ink px-2 py-1 rounded-sm">
         {category.label}
-      </Link>
+      </span>
     );
   }
 
   return (
-    <Link
-      href={`/${category.slug}`}
+    <span
       className={cn(
-        'inline-block font-display font-bold uppercase tracking-wider hover:underline underline-offset-2 decoration-2',
+        'inline-block font-display font-bold uppercase tracking-wider',
         size === 'sm' ? 'text-xs' : 'text-[11px]',
         category.colorClass
       )}
     >
       {category.label}
-    </Link>
+    </span>
   );
 }

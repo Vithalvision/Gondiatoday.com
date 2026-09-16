@@ -2,6 +2,8 @@ import { PrismaClient } from "@prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { Pool } from "pg";
 
+console.log("DATABASE_URL loaded:", process.env.DATABASE_URL ? "YES" : "NO - undefined!");
+
 const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined;
 };

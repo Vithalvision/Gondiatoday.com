@@ -164,7 +164,8 @@ export async function getTopStories() {
 
 export async function getLatestNews() {
   try {
-    const res = await fetch("http://localhost:3007/api/articles", {
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3001";
+    const res = await fetch(`${baseUrl}/api/articles`, {
       cache: "no-store",
     });
 

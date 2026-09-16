@@ -29,6 +29,7 @@ export const navItems: NavItem[] = [
   { label: "Authors", href: "/dashboard/authors", icon: "Users", section: "Content" },
   { label: "Media Library", href: "/dashboard/media", icon: "Image", section: "Content" },
   { label: "AI News Generator", href: "/dashboard/ai-generator", icon: "Sparkles", section: "AI Tools" },
+  { label: "Scheduler", href: "/dashboard/scheduler", icon: "ListOrdered", section: "AI Tools" },
   { label: "AI Content Queue", href: "/dashboard/ai-queue", icon: "ListOrdered", badge: 12, badgeVariant: "primary", section: "AI Tools" },
   { label: "SEO Manager", href: "/dashboard/seo", icon: "TrendingUp", section: "AI Tools" },
   { label: "Users", href: "/dashboard/users", icon: "UserCog", section: "Admin" },

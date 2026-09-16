@@ -30,7 +30,7 @@ export function WeatherWidget() {
     return () => clearInterval(interval);
   }, []);
 
-  if (!weather) {
+if (!weather || !weather.current) {
     return (
       <div
         className="h-20 rounded-lg border animate-pulse bg-gray-100 notranslate"

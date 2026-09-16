@@ -47,7 +47,7 @@ model Category {
 }
 
 model Media {
-  id           String   @id
+  id           String   @id @default(cuid())
   url          String
   publicId     String?
   createdAt    DateTime @default(now())
@@ -95,4 +95,34 @@ model User {
   createdAt DateTime  @default(now())
   updatedAt DateTime
   lastLogin DateTime?
+}
+model Campaign {
+  id            String   @id @default(uuid())
+  name          String
+  topics        String[]
+  categories    String[]
+  intervalHours Int      @default(24)
+  lastRunAt     DateTime?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  durationValue Int      @default(24)
+  durationUnit  String   @default("hour")
+}
+
+model CoveredTopic {
+  id          String   @id @default(cuid())
+  campaignId  String
+  topic       String
+  sourceHash  String   // unique fingerprint of the source content
+  publishedAt DateTime @default(now())
+
+  @@index([campaignId, topic])
+}
+model TopicRun {
+  id          String   @id @default(uuid())
+  campaignId  String
+  topic       String
+  lastRunAt   DateTime @default(now())
+
+  @@unique([campaignId, topic])
 }

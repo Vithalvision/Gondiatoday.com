@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 
+import { randomUUID } from "crypto";
+
 // GET ALL CATEGORIES
 export async function GET() {
   try {
@@ -35,14 +37,16 @@ export async function POST(req: Request) {
       );
     }
 
-    const category = await prisma.category.create({
-      data: {
-        name,
-        slug: slug || name.toLowerCase().replace(/\s+/g, "-"),
-        parent: parent || "None",
-        description: description || "",
-      },
-    });
+   const category = await prisma.category.create({
+   data: {
+    id: randomUUID(),
+    name,
+    slug: slug || name.toLowerCase().replace(/\s+/g, "-"),
+    parent: parent || "None",
+    description: description || "",
+    updatedAt: new Date(),
+  },
+});
 
     return NextResponse.json(category);
   } catch (error) {

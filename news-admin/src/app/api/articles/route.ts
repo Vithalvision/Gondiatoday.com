@@ -5,9 +5,6 @@ import { prisma } from "@/lib/prisma";
 export async function GET() {
   try {
     const articles = await prisma.article.findMany({
-      where: {
-        status: "published",
-      },
       orderBy: {
         createdAt: "desc",
       },
