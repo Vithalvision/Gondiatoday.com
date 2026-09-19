@@ -36,7 +36,7 @@ import { demoArticles } from "@/lib/data/demoarticles";
 // export async function getHeroArticle(slug: string) {
 //   try {
 //     const baseUrl =
-//       process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3007";
+//       process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3001";
 
 //     const res = await fetch(`${baseUrl}/api/articles/${slug}`, {
 //       cache: "no-store",
@@ -91,7 +91,7 @@ import { demoArticles } from "@/lib/data/demoarticles";
 export async function getHeroArticle(slug?: string) {
   try {
     const baseUrl =
-      process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3007";
+      process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
 
     const res = await fetch(`${baseUrl}/api/articles`, {
       cache: "no-store",
@@ -164,7 +164,7 @@ export async function getTopStories() {
 
 export async function getLatestNews() {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3001";
+    const baseUrl = process.env.NEXT_PUBLIC_ADMIN_URL || "http://localhost:3000";
     const res = await fetch(`${baseUrl}/api/articles`, {
       cache: "no-store",
     });
@@ -173,9 +173,10 @@ export async function getLatestNews() {
       throw new Error(`HTTP ${res.status}`);
     }
 
-    const data = await res.json();
+        const data = await res.json();
+    const publishedData = data.filter((article: any) => article.status === "published");
 
-    return data.map((article: any) => ({
+    return publishedData.map((article: any) => ({
       id: article.id,
       slug: article.slug || article.id,
 
@@ -239,7 +240,7 @@ export async function getLocalSpotlight() {
 export async function getArticlesByCategory(category: string) {
   try {
     const baseUrl =
-      process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3007";
+      process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
 
     const res = await fetch(`${baseUrl}/api/articles`, {
       cache: "no-store",

@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    const res = await fetch("http://localhost:3007/api/articles", {
+    const res = await fetch("http://localhost:3001/api/articles", {
       cache: "no-store",
     });
 
@@ -14,11 +14,9 @@ export async function GET() {
     }
 
     const articles = await res.json();
-
     return NextResponse.json(articles);
   } catch (error) {
     console.error(error);
-
     return NextResponse.json(
       { error: "Unable to connect to News Admin" },
       { status: 500 }
