@@ -36,7 +36,6 @@ export async function POST(req: Request) {
         name: name.trim(),
         topics: Array.isArray(topics) ? topics : [],
         categories: Array.isArray(categories) ? categories : [],
-        author: author || null,
         durationValue: durationValue || 24,
         durationUnit: durationUnit || "hour",
       },

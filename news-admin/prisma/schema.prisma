@@ -7,16 +7,16 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
+  id        String    @id @default(uuid())
   name      String
-  email     String   @unique
+  email     String    @unique
   phone     String?
   password  String
-  role      String   @default("reporter")
+  role      String
   category  String?
-  status    String   @default("Active")
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  status    String    @default("Active")
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
   lastLogin DateTime?
 }
 
@@ -86,25 +86,27 @@ model Place {
 
 model Pincode {
   id          String   @id @default(cuid())
+  areaName    String
   pincode     String   @unique
   city        String
   description String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  areaName    String
   image       String?
   slug        String   @unique
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
+
 model Campaign {
-  id         String   @id @default(uuid())
-  name       String
-  topics     String[]
-  categories String[]
-  author     String?
-  durationValue Int      @default(24)
-  durationUnit  String   @default("hour")
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  id            String    @id @default(uuid())
+  name          String
+  categories    String[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  topics        String[]
+  durationUnit  String    @default("hour")
+  durationValue Int       @default(24)
+  intervalHours Int       @default(24)
+  lastRunAt     DateTime?
 }
 
 model CoveredTopic {
@@ -113,8 +115,9 @@ model CoveredTopic {
   topic       String
   sourceHash  String
   publishedAt DateTime @default(now())
-}
 
+  @@index([campaignId, topic])
+}
 
 model TopicRun {
   id         String   @id @default(uuid())
@@ -124,8 +127,3 @@ model TopicRun {
 
   @@unique([campaignId, topic])
 }
-
-
-
-
-
