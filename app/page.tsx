@@ -23,9 +23,9 @@ import { VideoStories } from "@/components/home/VideoStories";
 import { PlacesSection } from "@/components/home/placessection";
 import { PincodeSection } from "@/components/home/pincodesection";
 import { places } from "@/lib/data/places";
-// import { pincodes } from "@/lib/data/pincodes";
 import { prisma } from "@/lib/prisma";
 import AdSlot from "@/components/ads/AdSlot";
+// import { pincodes } from "@/lib/data/pincodes";
 
 export const revalidate = 60;
 
@@ -87,6 +87,13 @@ export default async function HomePage() {
         <AdSlot type="infeed"/>
       </div>
 
+      {/* 🔵 MOBILE ONLY: PLACES TO VISIT */}
+      <div className="block xl:hidden w-full max-w-full mx-auto px-4 mt-6">
+        <div className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm">
+          <PlacesSection places={places} />
+        </div>
+      </div>
+
       {/* 🔵 MAIN GRID */}
       <section className="max-w-full mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
 
@@ -96,6 +103,11 @@ export default async function HomePage() {
 
           <div className="mt-6">
             <AdSlot type="infeed"/>
+          </div>
+
+          {/* 🔵 MOBILE ONLY: PINCODES */}
+          <div className="block xl:hidden mt-6 bg-white rounded-lg border border-gray-200 p-5 shadow-sm">
+            <PincodeSection pincodes={pincodes} />
           </div>
         </div>
 

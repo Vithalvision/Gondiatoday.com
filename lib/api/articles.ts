@@ -100,63 +100,76 @@ export async function getHeroArticle(slug?: string) {
       },
     });
 
-    if (!res.ok) return null;
+    if (res.ok) {
+      const articles = await res.json();
+      if (Array.isArray(articles) && articles.length > 0) {
+        const article = articles.find(
+          (item: any) => item.id === slug || item.slug === slug
+        );
 
-    const articles = await res.json();
+        if (article) {
+          const categoryName = article.category || "General";
+          const categorySlug = categoryName.toLowerCase().replace(/\s+/g, "-");
 
-    if (!Array.isArray(articles) || articles.length === 0) {
-      return null;
+          return {
+            id: article.id,
+            title: article.title,
+            slug: article.slug || article.id,
+            image: article.featuredImg || "/images/news-placeholder.jpg",
+            excerpt: article.content
+              ? article.content.replace(/<[^>]*>/g, "").substring(0, 180)
+              : "",
+            content: article.content || "",
+            category: {
+              slug: categorySlug,
+              label: categoryName,
+              colorClass: "bg-red-600 text-white",
+            },
+            author: {
+              name: article.author || "Gondia Today",
+            },
+            readTime: "2 min read",
+            publishedAt: article.createdAt,
+          };
+        }
+      }
     }
+  } catch (error) {
+    console.error("Error fetching article from API:", error);
+  }
 
-    // Find the requested article
-    const article = articles.find(
-      (item: any) =>
-        item.id === slug ||
-        item.slug === slug
-    );
+  // Fallback to mock data if API fails or article is not found
+  const allMocks = [
+    HERO_ARTICLE,
+    ...TOP_STORIES,
+    ...LATEST_NEWS,
+    ...EDITORS_PICK,
+    ...demoArticles,
+  ];
 
-    if (!article) return null;
-
-    const categoryName = article.category || "General";
-    const categorySlug = categoryName.toLowerCase().replace(/\s+/g, "-") as
-      | "gondia"
-      | "maharashtra"
-      | "india"
-      | "politics"
-      | "education"
-      | "business"
-      | "health"
-      | "sports"
-      | "general";
-
+  const mockArticle = allMocks.find((a: any) => a.id === slug || a.slug === slug);
+  if (mockArticle) {
     return {
-      id: article.id,
-      title: article.title,
-      slug: article.slug || article.id,
-
-      image: article.featuredImg || "/images/news-placeholder.jpg",
-
-      excerpt: article.content
-        ? article.content.replace(/<[^>]*>/g, "").substring(0, 180)
-        : "",
-
-      content: article.content || "",
-
-      category: {
-        slug: categorySlug,
-        label: categoryName,
+      id: mockArticle.id,
+      title: mockArticle.title,
+      slug: mockArticle.slug || mockArticle.id,
+      image: mockArticle.image || "/images/news-placeholder.jpg",
+      excerpt: mockArticle.excerpt || "",
+      content: (mockArticle as any).content || `<p>${mockArticle.excerpt || mockArticle.title}</p>`,
+      category: mockArticle.category || {
+        slug: "general",
+        label: "General",
         colorClass: "bg-red-600 text-white",
       },
-
-      author: {
-        name: article.author || "Gondia Today",
-      },
-      readTime: "2 min read",
-      publishedAt: article.createdAt,
+      author: typeof mockArticle.author === "string" 
+        ? { name: mockArticle.author } 
+        : (mockArticle.author || { name: "Gondia Today" }),
+      readTime: mockArticle.readTime || "2 min read",
+      publishedAt: mockArticle.publishedAt || new Date().toISOString(),
     };
-  } catch {
-    return null;
   }
+
+  return null;
 }
 export async function getTopStories() {
   return TOP_STORIES;

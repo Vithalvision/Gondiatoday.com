@@ -80,13 +80,17 @@ export default async function ArticlePage({
   const schema = {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://gondiatoday.com/${params.category}/${params.slug}`,
+    },
     headline: article.title,
     image: [article.image],
     datePublished: article.publishedAt,
     dateModified: article.publishedAt,
     author: {
       "@type": "Person",
-      name: article.author,
+      name: typeof article.author === 'string' ? article.author : (article.author?.name || "Gondia Today"),
     },
     publisher: {
       "@type": "Organization",
@@ -118,7 +122,7 @@ export default async function ArticlePage({
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
 
         {/* LEFT SIDEBAR */}
-        <aside className="lg:col-span-2 notranslate" translate="no">
+        <aside className="order-2 lg:order-1 lg:col-span-2 notranslate" translate="no">
           <div className="sticky top-24 space-y-6">
 
             <AdSlot type="sidebar" />
@@ -138,7 +142,7 @@ export default async function ArticlePage({
 
 
         {/* ARTICLE */}
-        <main className="lg:col-span-7">
+        <main className="order-1 lg:order-2 lg:col-span-7">
 
           <CategoryTag category={article.category} />
 
@@ -208,7 +212,7 @@ export default async function ArticlePage({
 
 
         {/* RIGHT SIDEBAR */}
-        <aside className="lg:col-span-3 notranslate" translate="no">
+        <aside className="order-3 lg:order-3 lg:col-span-3 notranslate" translate="no">
 
           <div className="sticky top-24 space-y-6">
 

@@ -10,13 +10,13 @@ export function HoroscopeWidget() {
     >
       <Stars className="text-purple-500" size={18} />
 
-      <div className="text-xs font-semibold truncate w-full text-center">
+      <span className="text-xs font-semibold truncate w-full text-center block">
         Horoscope
-      </div>
+      </span>
 
-      <div className="text-[10px] text-gray-500 truncate w-full text-center">
+      <span className="text-[10px] text-gray-500 truncate w-full text-center block">
         Today&apos;s Prediction
-      </div>
+      </span>
     </Link>
   );
 }

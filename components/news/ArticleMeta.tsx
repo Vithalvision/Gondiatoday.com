@@ -14,7 +14,7 @@ export function ArticleMeta({
   dark?: boolean;
 }) {
   return (
-    <div
+    <span
       className={cn(
         'flex flex-wrap items-center gap-x-2 gap-y-1 text-xs mt-2.5',
         dark ? 'text-white/85' : 'text-body'
@@ -41,6 +41,6 @@ export function ArticleMeta({
           {readTime}
         </span>
       )}
-    </div>
+    </span>
   );
 }

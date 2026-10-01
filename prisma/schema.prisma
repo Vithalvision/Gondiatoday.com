@@ -67,7 +67,7 @@ model Pincode {
   areaName    String
   pincode     String   @unique
   city        String
-  description String @db.Text
+  description String   @db.Text
   image       String?
   slug        String   @unique
   createdAt   DateTime @default(now())
@@ -96,6 +96,7 @@ model User {
   updatedAt DateTime
   lastLogin DateTime?
 }
+
 model Campaign {
   id            String   @id @default(uuid())
   name          String
@@ -118,6 +119,7 @@ model CoveredTopic {
 
   @@index([campaignId, topic])
 }
+
 model TopicRun {
   id          String   @id @default(uuid())
   campaignId  String
@@ -125,4 +127,13 @@ model TopicRun {
   lastRunAt   DateTime @default(now())
 
   @@unique([campaignId, topic])
+}
+
+model Advertisement {
+  id          String   @id @default(cuid())
+  slotType    String   // e.g., "header", "sidebar", "infeed", "footer"
+  imageUrl    String   // The URL of the banner image
+  targetUrl   String   // Where the ad clicks to
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
 }

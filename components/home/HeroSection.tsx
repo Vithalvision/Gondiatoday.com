@@ -3,7 +3,6 @@ import { ArticleCard } from "@/components/news/ArticleCard";
 import { TopStoriesSidebar } from "./TopStoriesSidebar";
 import { PlacesSection } from "./placessection";
 import { PincodeSection } from "./pincodesection";
-import AdSlot from "../ads/AdSlot";
 
 interface Place {
   id: number;
@@ -37,15 +36,12 @@ export function HeroSection({
       <div className="grid grid-cols-1 xl:grid-cols-12 gap-6">
 
         {/* LEFT SIDEBAR */}
-        <aside className="xl:col-span-2">
+        <aside className="hidden xl:block xl:col-span-2">
           <div className="sticky top-24 space-y-6">
-                  <AdSlot type="sidebar" />
 
             <div className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm">
               <PlacesSection places={places} />
             </div>
-
-                  <AdSlot type="sidebar" />
 
             <div className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm">
               <PincodeSection pincodes={pincodes} />
@@ -55,42 +51,41 @@ export function HeroSection({
         </aside>
 
         {/* HERO */}
-      <main className="xl:col-span-7 space-y-6">
+        <main className="xl:col-span-7 space-y-6">
 
-        {/* Hero */}
-        {hero && (
-          <ArticleCard
-            article={hero}
-            variant="hero"
-          />
-        )}
+          {/* Hero */}
+          {hero && (
+            <ArticleCard
+              article={hero}
+              variant="hero"
+            />
+          )}
 
-        {/* Scrollable News List */}
-        <div className="bg-white rounded-lg border border-gray-200 shadow-sm">
+          {/* Scrollable News List */}
+          <div className="bg-white rounded-lg border border-gray-200 shadow-sm">
 
-          <div className="px-4 py-3 border-b">
-            <h2 className="text-lg font-bold">
-              Latest News
-            </h2>
+            <div className="px-4 py-3 border-b">
+              <h2 className="text-lg font-bold">
+                Latest News
+              </h2>
+            </div>
+
+            <div className="h-[420px] overflow-y-auto">
+              {latestNews.map((article) => (
+                <ArticleCard
+                  key={article.id}
+                  article={article}
+                  variant="list"
+                />
+              ))}
+            </div>
+
           </div>
 
-          <div className="h-[420px] overflow-y-auto">
-            {latestNews.slice(1).map((article) => (
-              <ArticleCard
-                key={article.id}
-                article={article}
-                variant="list"
-              />
-            ))}
-          </div>
-
-        </div>
-
-      </main>
+        </main>
 
         {/* RIGHT SIDEBAR */}
         <aside className="xl:col-span-3">
-                <AdSlot type="sidebar" />
           <TopStoriesSidebar
             stories={topStories}
           />

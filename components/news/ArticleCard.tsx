@@ -41,10 +41,10 @@ export function ArticleCard({
           className="object-cover transition-transform duration-[600ms] ease-out group-hover:scale-105"
         />
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-black/5" />
+        <span className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-black/5 block" />
 
-        <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-8">
-          <CategoryTag category={article.category} onDark />
+        <span className="absolute bottom-0 left-0 right-0 p-5 sm:p-8 block">
+          <CategoryTag category={article.category} onDark asSpan />
 
           <h1
             translate="yes"
@@ -66,7 +66,7 @@ export function ArticleCard({
             readTime={article.readTime}
             dark
           />
-        </div>
+        </span>
       </Link>
     );
   }
@@ -80,7 +80,7 @@ export function ArticleCard({
           focusRing
         )}
       >
-        <div className="relative w-20 h-[72px] sm:w-24 sm:h-20 flex-shrink-0 rounded-card overflow-hidden bg-gray-100">
+        <span className="relative w-20 h-[72px] sm:w-24 sm:h-20 flex-shrink-0 rounded-card overflow-hidden bg-gray-100 block">
           <ArticleImage
             src={article.image}
             alt={article.title}
@@ -89,10 +89,10 @@ export function ArticleCard({
             sizes="(max-width: 768px) 100vw, 66vw"
             className="object-cover transition-transform duration-[600ms] ease-out group-hover:scale-105"
           />
-        </div>
+        </span>
 
-        <div className="min-w-0 flex flex-col justify-center">
-          <CategoryTag category={article.category} size="xs" />
+        <span className="min-w-0 flex flex-col justify-center">
+          <CategoryTag category={article.category} size="xs" asSpan />
 
           <h3
             translate="yes"
@@ -104,7 +104,7 @@ export function ArticleCard({
           <p className="text-[11px] text-body mt-1">
             {timeAgo(article.publishedAt)}
           </p>
-        </div>
+        </span>
       </Link>
     );
   }
@@ -112,9 +112,9 @@ export function ArticleCard({
   if (variant === "pick") {
     return (
       <Link href={href} className={cn("block group rounded-card", focusRing)}>
-        <div
+        <span
           className={cn(
-            "relative rounded-card overflow-hidden bg-gray-100 shadow-sm",
+            "relative rounded-card overflow-hidden bg-gray-100 shadow-sm block",
             article.featured ? "h-64" : "h-44"
           )}
         >
@@ -132,7 +132,7 @@ export function ArticleCard({
               Featured
             </span>
           )}
-        </div>
+        </span>
 
         <h3
           translate="yes"
@@ -166,7 +166,7 @@ export function ArticleCard({
         focusRing
       )}
     >
-      <div className="relative w-28 h-24 sm:w-32 sm:h-24 flex-shrink-0 rounded-card overflow-hidden bg-gray-100">
+      <span className="relative w-28 h-24 sm:w-32 sm:h-24 flex-shrink-0 rounded-card overflow-hidden bg-gray-100 block">
         <ArticleImage
           src={article.image}
           alt={article.title}
@@ -175,10 +175,10 @@ export function ArticleCard({
           sizes="(max-width: 768px) 100vw, 66vw"
           className="object-cover transition-transform duration-[600ms] ease-out group-hover:scale-105"
         />
-      </div>
+      </span>
 
-      <div className="min-w-0 flex flex-col">
-        <CategoryTag category={article.category} size="xs" />
+      <span className="min-w-0 flex flex-col">
+        <CategoryTag category={article.category} size="xs" asSpan />
 
         <h3
           translate="yes"
@@ -197,7 +197,7 @@ export function ArticleCard({
         <p className="text-[11px] text-body/80 mt-auto pt-1.5">
           {timeAgo(article.publishedAt)}
         </p>
-      </div>
+      </span>
     </Link>
   );
 }

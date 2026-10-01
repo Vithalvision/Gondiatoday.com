@@ -26,14 +26,14 @@ export function PincodeSection({ pincodes }: PincodeSectionProps) {
             href={`/pincode/${item.slug ?? item.pin}`}
             className="block"
           >
-            <div className="flex justify-between border-b border-gray-100 pb-2 text-sm cursor-pointer hover:bg-gray-50">
+            <span className="flex justify-between border-b border-gray-100 pb-2 text-sm cursor-pointer hover:bg-gray-50">
               <span className="font-semibold text-gray-700">
                 {item.pin}
               </span>
               <span className="text-gray-600">
                 {item.area}
               </span>
-            </div>
+            </span>
           </Link>
         ))}
       </div>
